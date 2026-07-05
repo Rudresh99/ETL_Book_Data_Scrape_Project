@@ -1,66 +1,197 @@
-# 📚 Books ETL Pipeline & Dashboard
+# 📚 ETL Book Data Scrape Project
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red?logo=streamlit)
-![Pandas](https://img.shields.io/badge/Pandas-ETL-green?logo=pandas)
-![SQLite](https://img.shields.io/badge/SQLite-Database-lightgrey?logo=sqlite)
-![BeautifulSoup](https://img.shields.io/badge/Web%20Scraping-BeautifulSoup-yellow)
+An end-to-end **ETL (Extract → Transform → Load)** project that scrapes book data from the **Books to Scrape** website, transforms it into an analytics-ready format, stores it in multiple formats, and visualizes key insights through an interactive dashboard.
 
-## 🚀 Project Overview
-This project demonstrates an **end-to-end ETL (Extract → Transform → Load) pipeline** combined with a **data visualization dashboard**.  
-It uses data from [Books to Scrape](http://books.toscrape.com), a public test website for practicing web scraping.
-
-The project showcases:
-- ✅ Web scraping using `requests` & `BeautifulSoup`
-- ✅ Data transformation with `pandas`
-- ✅ Storage in both **SQLite** and **Parquet**
-- ✅ Interactive dashboard using **Streamlit** + **Plotly**
-- ✅ Clean project structure, virtual environment, and version control (Git/GitHub)
+This project demonstrates a real-world data engineering workflow using Python and showcases skills in web scraping, data transformation, database management, and dashboard development.
 
 ---
 
+## 🚀 Project Features
 
-## ⚙️ Tech Stack
+- 🌐 Scrape book data using **Requests** and **BeautifulSoup**
+- 🔄 Clean and transform data with **Pandas**
+- 💾 Store processed data in **SQLite** and **Parquet**
+- 📊 Build an interactive dashboard using **Streamlit** and **Plotly**
+- 📁 Well-structured ETL project following best practices
+- 🔧 Version controlled with **Git & GitHub**
 
-- **Language:** Python 3.10+
-- **Libraries:** 
-  - Web Scraping → `requests`, `beautifulsoup4`, `lxml`
-  - ETL & Storage → `pandas`, `pyarrow`, `sqlalchemy`, `sqlite3`
-  - Visualization → `streamlit`, `plotly`, `altair`
-- **Database:** SQLite (lightweight, file-based DB)
-- **Dashboard:** Streamlit (interactive web UI)
+---
+
+## 🛠️ Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Programming Language | Python 3.10+ |
+| Web Scraping | Requests, BeautifulSoup4, lxml |
+| Data Processing | Pandas |
+| Database | SQLite |
+| Data Storage | Parquet, SQLAlchemy, PyArrow |
+| Visualization | Streamlit, Plotly, Altair |
+| Version Control | Git, GitHub |
 
 ---
 
 ## 🔄 ETL Workflow
 
-1. **Extract (scrape.py)**
-   - Scrapes book details (title, price, stock, rating, category) from multiple pages.
-   - Saves raw data as JSON & CSV.
+### 📥 Extract (`scrape.py`)
 
-2. **Transform & Load (transform_and_load.py)**
-   - Cleans data (price → numeric, rating → integer).
-   - Stores data in **Parquet** format (for analytics).
-   - Loads structured data into an **SQLite database**.
-
-3. **Visualize (dashboard.py)**
-   - Reads processed data.
-   - Interactive dashboard with:
-     - Category distribution of books
-     - Top 10 most expensive books
-     - Stock availability visualization
+- Scrapes book details from multiple pages of the **Books to Scrape** website.
+- Extracts:
+  - Book Title
+  - Price
+  - Rating
+  - Stock Availability
+  - Category
+- Saves the raw dataset as **CSV** and **JSON**.
 
 ---
 
-## ▶️ How to Run Locally (Mac/Windows/Linux)
+### 🔄 Transform & Load (`transform_and_load.py`)
 
-1. **Clone Repo**
-   ```bash
-   git clone https://github.com/<your-username>/books-dashboard.git
-   cd books-dashboard
+- Cleans and standardizes the extracted data.
+- Converts prices into numeric values.
+- Maps book ratings into numerical format.
+- Creates an analytics-ready dataset.
+- Loads the processed data into:
+  - SQLite Database
+  - Parquet Files
 
-👨‍💻 Author
+---
 
-Rudresh – Data Engineer Enthusiast
+### 📊 Dashboard (`dashboard.py`)
+
+The Streamlit dashboard provides interactive visualizations including:
+
+- 📚 Books by Category
+- 💰 Top 10 Most Expensive Books
+- 📦 Stock Availability Analysis
+- 📈 Interactive Charts and Filters
+
+---
+
+## 📂 Project Structure
+
+```text
+ETL_Book_Data_Scrape_Project/
+│
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── books.db
+│
+├── src/
+│   ├── scrape.py
+│   ├── transform_and_load.py
+│   └── dashboard.py
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+---
+
+## ▶️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Rudresh99/ETL_Book_Data_Scrape_Project.git
+
+cd ETL_Book_Data_Scrape_Project
+```
+
+### 2. Create a Virtual Environment
+
+**macOS / Linux**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+**Windows**
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the ETL Pipeline
+
+Extract data:
+
+```bash
+python src/scrape.py
+```
+
+Transform and load data:
+
+```bash
+python src/transform_and_load.py
+```
+
+Launch the dashboard:
+
+```bash
+streamlit run src/dashboard.py
+```
+
+---
+
+## 📊 Dashboard Preview
+
+The dashboard enables users to:
+
+- Analyze book categories
+- Compare book prices
+- Identify the most expensive books
+- Explore stock availability
+- Interact with visual reports using filters
+
+---
+
+## 🎯 Skills Demonstrated
+
+- Web Scraping
+- ETL Pipeline Development
+- Data Cleaning & Transformation
+- SQL & SQLite
+- Parquet Data Storage
+- Data Visualization
+- Streamlit Dashboard Development
+- Python Programming
+- Git & GitHub
+
+---
+
+## 📌 Data Source
+
+This project uses data from the public practice website:
+
+**Books to Scrape**  
+http://books.toscrape.com
+
+The website is intended for learning and practicing web scraping techniques.
+
+---
+
+## 👨‍💻 Author
+
+**Rudresh Joshi**
+
+**Data Engineer | Python | SQL | ETL | Data Analytics**
 
 📧 rudreshjoshi99@gmail.com
+
+🔗 GitHub: https://github.com/Rudresh99
+
+---
+
+⭐ If you found this project useful, consider giving the repository a **Star**.
